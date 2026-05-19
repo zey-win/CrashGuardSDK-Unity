@@ -8,7 +8,7 @@ Lightweight crash analytics and stability monitoring SDK for Unity. iOS + Androi
 
 1. Open **Window > Package Manager**
 2. Click **+** → **Add package from git URL**
-3. Enter: `https://github.com/thewhiteapps/CrashGuardSDK-Unity.git`
+3. Enter: `https://github.com/zey-win/CrashGuardSDK-Unity.git`
 4. Click **Add**
 
 ### Auto-install via ZeyWin Ads SDK
