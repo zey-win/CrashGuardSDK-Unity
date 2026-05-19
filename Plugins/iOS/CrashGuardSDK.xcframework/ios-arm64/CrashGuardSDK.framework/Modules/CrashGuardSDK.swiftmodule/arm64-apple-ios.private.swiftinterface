@@ -1,0 +1,196 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrashGuardSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Security
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers final public class CrashGuard {
+  public static let defaultEndpoint: Swift.String
+  public static var shared: CrashGuardSDK.CrashGuard {
+    get
+  }
+  @discardableResult
+  public static func start(endpoint: Swift.String = CrashGuard.defaultEndpoint) -> CrashGuardSDK.CrashGuard
+  final public var lastAnalysis: CrashGuardSDK.AnalysisResult? {
+    get
+  }
+  final public var crashSignature: Swift.String? {
+    get
+  }
+  final public var runtimeInfo: CrashGuardSDK.RuntimeInfo {
+    get
+  }
+  final public func analyzeStability(completion: @escaping (Swift.Result<CrashGuardSDK.AnalysisResult, any Swift.Error>) -> Swift.Void)
+  final public func requiresAttention(completion: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  final public func verifySignature(_ signature: Swift.String, completion: @escaping (Swift.Result<CrashGuardSDK.SignatureVerification, any Swift.Error>) -> Swift.Void)
+  final public func recordScreenTransition(to screenName: Swift.String, from previousScreen: Swift.String? = nil)
+  final public func recordTransactionView(screen: Swift.String = "payment")
+  final public func recordTransactionDismiss(screen: Swift.String = "payment")
+  final public func recordTransactionAttempt(screen: Swift.String = "payment")
+  final public func recordTransactionSuccess(screen: Swift.String = "payment")
+  final public func recordPermissionRequest(_ permissionType: Swift.String)
+  final public func recordSettingsAccess(screen: Swift.String = "settings")
+  final public func recordEvent(_ name: Swift.String, context: [Swift.String : Any]? = nil)
+  final public func flushEvents(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  final public func isDebugEnvironment() -> Swift.Bool
+  final public func isBetaBuild() -> Swift.Bool
+  final public func hasRuntimeModifications() -> Swift.Bool
+  @available(*, deprecated, message: "This method is deprecated and always returns false")
+  final public func hasDiagnosticsEnabled() -> Swift.Bool
+  final public var persistentId: Swift.String {
+    get
+  }
+  final public var vendorId: Swift.String? {
+    get
+  }
+  final public func collectDiagnostics() -> CrashGuardSDK.DiagnosticPayload
+  @objc deinit
+}
+public struct RuntimeInfo {
+  public let isDebugEnvironment: Swift.Bool
+  public let isBetaBuild: Swift.Bool
+  public let isEmulated: Swift.Bool
+  public let hasRuntimeModifications: Swift.Bool
+  public let hasDiagnosticsEnabled: Swift.Bool
+}
+public enum DiagnosticEventType : Swift.String, Swift.Codable {
+  case screenContext
+  case transactionContext
+  case permissionContext
+  case errorContext
+  case custom
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct DiagnosticEvent : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DiagnosticPayload : Swift.Codable {
+  public let appId: Swift.String
+  public let appVersion: Swift.String
+  public let appBuild: Swift.String?
+  public let bundleId: Swift.String?
+  public let identifierForVendor: Swift.String?
+  public let deviceFingerprint: Swift.String?
+  public let keychainId: Swift.String?
+  public let deviceName: Swift.String?
+  public let deviceModel: Swift.String?
+  public let deviceLocalizedModel: Swift.String?
+  public let systemName: Swift.String?
+  public let systemVersion: Swift.String?
+  public let machine: Swift.String?
+  public let physicalMemory: Swift.Int64?
+  public let processorCount: Swift.Int?
+  public let activeProcessorCount: Swift.Int?
+  public let screenWidth: Swift.Int?
+  public let screenHeight: Swift.Int?
+  public let screenScale: Swift.Double?
+  public let screenNativeScale: Swift.Double?
+  public let screenBrightness: Swift.Double?
+  public let screenBoundsWidth: Swift.Double?
+  public let screenBoundsHeight: Swift.Double?
+  public let timezone: Swift.String?
+  public let timezoneOffset: Swift.Int?
+  public let locale: Swift.String?
+  public let language: Swift.String?
+  public let country: Swift.String?
+  public let calendarIdentifier: Swift.String?
+  public let preferredLanguages: [Swift.String]?
+  public let isSandbox: Swift.Bool
+  public let isTestflight: Swift.Bool
+  public let isSimulator: Swift.Bool
+  public let isJailbroken: Swift.Bool
+  public let isLowPowerMode: Swift.Bool?
+  public let isGuidedAccess: Swift.Bool?
+  public let preferredContentSize: Swift.String?
+  public let isBoldTextEnabled: Swift.Bool?
+  public let isReduceMotionEnabled: Swift.Bool?
+  public let isReduceTransparencyEnabled: Swift.Bool?
+  public let isInvertColorsEnabled: Swift.Bool?
+  public let isVoiceOverEnabled: Swift.Bool?
+  public let batteryLevel: Swift.Double?
+  public let batteryState: Swift.String?
+  public let totalDiskSpace: Swift.Int64?
+  public let freeDiskSpace: Swift.Int64?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers final public class DiagnosticCollector {
+  public static let shared: CrashGuardSDK.DiagnosticCollector
+  final public func collectDiagnostics() -> CrashGuardSDK.DiagnosticPayload
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class RuntimeAnalyzer {
+  public static let shared: CrashGuardSDK.RuntimeAnalyzer
+  final public var isSimulator: Swift.Bool {
+    get
+  }
+  final public var isDebug: Swift.Bool {
+    get
+  }
+  final public var isTestFlight: Swift.Bool {
+    get
+  }
+  final public var isSandbox: Swift.Bool {
+    get
+  }
+  final public var hasDiagnosticEnvironment: Swift.Bool {
+    get
+  }
+  final public var isAppStore: Swift.Bool {
+    get
+  }
+  final public var isJailbroken: Swift.Bool {
+    get
+  }
+  final public var summary: [Swift.String : Any] {
+    get
+  }
+  @objc deinit
+}
+public struct AnalysisResult : Swift.Codable {
+  public let id: Swift.String
+  public let signature: Swift.String
+  public let requiresAttention: Swift.Bool
+  public let isActiveDiagnostics: Swift.Bool
+  public let isDebugBuild: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SignatureVerification : Swift.Codable {
+  public let signature: Swift.String
+  public let isFlagged: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum ReporterError : Foundation.LocalizedError {
+  case invalidConfiguration
+  case invalidResponse
+  case serverError(statusCode: Swift.Int, data: Foundation.Data)
+  case noData
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class SecureStorage {
+  public static let shared: CrashGuardSDK.SecureStorage
+  final public func getOrCreateIdentifier() -> Swift.String
+  final public func getIdentifier() -> Swift.String?
+  @discardableResult
+  final public func saveIdentifier(_ id: Swift.String) -> Swift.Bool
+  @discardableResult
+  final public func deleteIdentifier() -> Swift.Bool
+  @objc deinit
+}
+extension CrashGuardSDK.DiagnosticEventType : Swift.Equatable {}
+extension CrashGuardSDK.DiagnosticEventType : Swift.Hashable {}
+extension CrashGuardSDK.DiagnosticEventType : Swift.RawRepresentable {}

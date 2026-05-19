@@ -1,0 +1,4 @@
+framework module CrashGuardSDK {
+  header "CrashGuardSDK-Swift.h"
+  requires objc
+}

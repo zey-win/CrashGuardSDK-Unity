@@ -1,0 +1,21 @@
+{
+    "name": "com.crashguard.sdk",
+    "version": "1.0.1",
+    "displayName": "CrashGuard SDK",
+    "description": "Lightweight crash analytics and stability monitoring SDK for Unity",
+    "unity": "2020.3",
+    "keywords": [
+        "crash",
+        "analytics",
+        "stability",
+        "monitoring"
+    ],
+    "author": {
+        "name": "CrashGuard",
+        "url": "https://crashguard.dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thewhiteapps/CrashGuardSDK-Unity.git"
+    }
+}

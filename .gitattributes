@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Treat native binaries as binary so LF normalization doesn't corrupt them
+*.aar binary
+*.so binary
+*.a binary
+*.dylib binary
+*.framework/** binary
+*.xcframework/** binary
