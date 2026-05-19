@@ -15,7 +15,7 @@ namespace CrashGuard
         public string signature;
 
         /// <summary>
-        /// Whether the signature is flagged as problematic (known moderator)
+        /// Whether the signature matches a known-unstable runtime fingerprint.
         /// </summary>
         public bool isFlagged;
 

@@ -20,12 +20,13 @@ namespace CrashGuard
         public string signature;
 
         /// <summary>
-        /// Whether the environment requires attention (potential moderator/reviewer)
+        /// Whether the runtime environment has known stability risks
+        /// and warrants closer monitoring.
         /// </summary>
         public bool requiresAttention;
 
         /// <summary>
-        /// Whether active diagnostics are enabled (Apple review environment)
+        /// Whether active diagnostics collection is enabled for this session.
         /// </summary>
         public bool isActiveDiagnostics;
 
