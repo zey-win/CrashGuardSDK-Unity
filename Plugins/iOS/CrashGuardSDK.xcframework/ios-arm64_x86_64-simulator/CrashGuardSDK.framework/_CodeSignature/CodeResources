@@ -14,7 +14,7 @@
 		</data>
 		<key>Modules/CrashGuardSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		AQ3bJqHFbSWEMHDCB8TungdtDhY=
+		Yb49sfefpB+lx+t77ab3FgBaJLs=
 		</data>
 		<key>Modules/CrashGuardSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/CrashGuardSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		AQ3bJqHFbSWEMHDCB8TungdtDhY=
+		Yb49sfefpB+lx+t77ab3FgBaJLs=
 		</data>
 		<key>Modules/CrashGuardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nsV1Ems7kD9WlOwz90GNxeDsjIwraNg5h00RS47mnzM=
+			x7OQOn+x+YBFYv0xyDeS+tEpL0xaH9crljPXkRaKbl4=
 			</data>
 		</dict>
 		<key>Modules/CrashGuardSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -105,7 +105,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nsV1Ems7kD9WlOwz90GNxeDsjIwraNg5h00RS47mnzM=
+			x7OQOn+x+YBFYv0xyDeS+tEpL0xaH9crljPXkRaKbl4=
 			</data>
 		</dict>
 		<key>Modules/CrashGuardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
