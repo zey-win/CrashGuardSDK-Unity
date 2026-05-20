@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.lang.reflect.Method;
 
 import kotlin.Unit;
 import kotlin.Result;
@@ -26,6 +27,36 @@ public class CrashGuardBridge {
 
     private static Activity getActivity() {
         return UnityPlayer.currentActivity;
+    }
+
+    private static Object resultValue(Result<?> result) {
+        try {
+            Method method = Result.class.getMethod("unbox-impl");
+            return method.invoke(result);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static boolean resultIsSuccess(Result<?> result) {
+        try {
+            Method method = Result.class.getMethod("isSuccess-impl", Object.class);
+            Object value = resultValue(result);
+            Object success = method.invoke(null, value);
+            return success instanceof Boolean && (Boolean)success;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private static Throwable resultException(Result<?> result) {
+        try {
+            Method method = Result.class.getMethod("exceptionOrNull-impl", Object.class);
+            Object error = method.invoke(null, resultValue(result));
+            return error instanceof Throwable ? (Throwable)error : null;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     // ============== Initialization ==============
@@ -47,8 +78,9 @@ public class CrashGuardBridge {
         try {
             CrashGuard.Companion.getShared().analyzeStability(result -> {
                 try {
-                    if (result.isSuccess()) {
-                        AnalysisResult analysis = result.getOrNull();
+                    if (resultIsSuccess(result)) {
+                        Object value = resultValue(result);
+                        AnalysisResult analysis = value instanceof AnalysisResult ? (AnalysisResult)value : null;
                         if (analysis != null) {
                             JSONObject json = new JSONObject();
                             json.put("id", analysis.getId());
@@ -60,7 +92,7 @@ public class CrashGuardBridge {
                         }
                     } else {
                         JSONObject json = new JSONObject();
-                        Throwable error = result.exceptionOrNull();
+                        Throwable error = resultException(result);
                         json.put("error", error != null ? error.getMessage() : "Unknown error");
                         UnityPlayer.UnitySendMessage(gameObject, methodName, json.toString());
                     }
@@ -78,7 +110,8 @@ public class CrashGuardBridge {
         try {
             CrashGuard.Companion.getShared().requiresAttention(result -> {
                 try {
-                    Boolean requires = result.isSuccess() ? result.getOrNull() : false;
+                    Object value = resultIsSuccess(result) ? resultValue(result) : false;
+                    Boolean requires = value instanceof Boolean ? (Boolean)value : false;
                     UnityPlayer.UnitySendMessage(gameObject, methodName, requires != null && requires ? "true" : "false");
                 } catch (Exception e) {
                     Log.e(TAG, "Error in requiresAttention callback", e);
@@ -269,7 +302,7 @@ public class CrashGuardBridge {
     public static void flushEvents(final String gameObject, final String methodName) {
         try {
             CrashGuard.Companion.getShared().flushEvents(result -> {
-                UnityPlayer.UnitySendMessage(gameObject, methodName, result.isSuccess() ? "true" : "false");
+                UnityPlayer.UnitySendMessage(gameObject, methodName, resultIsSuccess(result) ? "true" : "false");
                 return Unit.INSTANCE;
             });
         } catch (Exception e) {

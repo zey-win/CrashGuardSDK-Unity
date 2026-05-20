@@ -55,14 +55,14 @@ namespace CrashGuard
         {
             if (_isInitialized)
             {
-                Debug.LogWarning("[CrashGuard] Already initialized");
+                CrashGuardLogger.Warn("Already initialized");
                 return;
             }
 
             CrashGuardBridge.Start();
             _isInitialized = true;
 
-            Debug.Log("[CrashGuard] Initialized");
+            CrashGuardLogger.Log("Initialized");
         }
 
         // ============== Stability Analysis ==============

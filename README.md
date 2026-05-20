@@ -17,7 +17,7 @@ CrashGuard is auto-installed when the [ZeyWin Ads SDK](https://github.com/thewhi
 
 ### Manual Installation
 
-Copy the contents of this repo into your project's `Packages/com.crashguard.sdk/` folder, or import `CrashGuard-1.0.0.unitypackage`.
+Copy the contents of this repo into your project's `Packages/com.crashguard.sdk/` folder, or import `CrashGuard-1.0.1.unitypackage`.
 
 ## Usage
 
@@ -54,3 +54,11 @@ See `Runtime/CrashGuard.cs` for the full API.
 - Sets `SWIFT_VERSION=5.0`, disables Bitcode
 - Embeds Swift libs, sets rpath
 - Copies `PrivacyInfo.xcprivacy` into the Xcode project
+
+## Release verification
+
+- Unity Editor compile: verified through the ZeyWin sample project.
+- Android target compile: verified.
+- Android APK smoke build: verified.
+- iOS target compile: verified.
+- iOS Xcode export smoke build: verified.

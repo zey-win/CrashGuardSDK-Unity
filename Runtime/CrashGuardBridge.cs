@@ -161,7 +161,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("start");
 #else
-            Debug.Log("[CrashGuard] Editor mode - Start() simulated");
+            CrashGuardLogger.DebugLog("Editor mode - Start() simulated");
 #endif
         }
 
@@ -323,7 +323,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordScreenTransition", to, from);
 #else
-            Debug.Log($"[CrashGuard] RecordScreenTransition: {from} -> {to}");
+            CrashGuardLogger.DebugLog("RecordScreenTransition");
 #endif
         }
 
@@ -334,7 +334,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordTransactionView", screen);
 #else
-            Debug.Log($"[CrashGuard] RecordTransactionView: {screen}");
+            CrashGuardLogger.DebugLog("RecordTransactionView");
 #endif
         }
 
@@ -345,7 +345,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordTransactionDismiss", screen);
 #else
-            Debug.Log($"[CrashGuard] RecordTransactionDismiss: {screen}");
+            CrashGuardLogger.DebugLog("RecordTransactionDismiss");
 #endif
         }
 
@@ -356,7 +356,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordTransactionAttempt", screen);
 #else
-            Debug.Log($"[CrashGuard] RecordTransactionAttempt: {screen}");
+            CrashGuardLogger.DebugLog("RecordTransactionAttempt");
 #endif
         }
 
@@ -367,7 +367,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordTransactionSuccess", screen);
 #else
-            Debug.Log($"[CrashGuard] RecordTransactionSuccess: {screen}");
+            CrashGuardLogger.DebugLog("RecordTransactionSuccess");
 #endif
         }
 
@@ -378,7 +378,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordPermissionRequest", permissionType);
 #else
-            Debug.Log($"[CrashGuard] RecordPermissionRequest: {permissionType}");
+            CrashGuardLogger.DebugLog("RecordPermissionRequest");
 #endif
         }
 
@@ -389,7 +389,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordSettingsAccess", screen);
 #else
-            Debug.Log($"[CrashGuard] RecordSettingsAccess: {screen}");
+            CrashGuardLogger.DebugLog("RecordSettingsAccess");
 #endif
         }
 
@@ -400,7 +400,7 @@ namespace CrashGuard.Internal
 #elif UNITY_ANDROID && !UNITY_EDITOR
             Bridge.CallStatic("recordEvent", name, contextJson);
 #else
-            Debug.Log($"[CrashGuard] RecordEvent: {name}, context={contextJson}");
+            CrashGuardLogger.DebugLog("RecordEvent");
 #endif
         }
 

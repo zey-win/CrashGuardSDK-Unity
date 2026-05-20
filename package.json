@@ -4,6 +4,7 @@
     "displayName": "CrashGuard SDK",
     "description": "Lightweight crash analytics and stability monitoring SDK for Unity",
     "unity": "2020.3",
+    "license": "MIT",
     "keywords": [
         "crash",
         "analytics",
