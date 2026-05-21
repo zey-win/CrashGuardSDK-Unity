@@ -13,7 +13,7 @@ Lightweight crash analytics and stability monitoring SDK for Unity. iOS + Androi
 
 ### Auto-install via ZeyWin Ads SDK
 
-CrashGuard is auto-installed when the [ZeyWin Ads SDK](https://github.com/thewhiteapps/ZeyWinAdsSDK-Unity) is added to a project — no manual step required.
+CrashGuard is auto-installed when the [ZeyWin Ads SDK](https://github.com/zey-win/ZeyWinAdsSDK-Unity) is added to a project — no manual step required.
 
 ### Manual Installation
 
@@ -62,3 +62,4 @@ See `Runtime/CrashGuard.cs` for the full API.
 - Android APK smoke build: verified.
 - iOS target compile: verified.
 - iOS Xcode export smoke build: verified.
+- Git URL install hash: `6ec08304ac87d7e0c327bb3027df064386fdccf7`.
