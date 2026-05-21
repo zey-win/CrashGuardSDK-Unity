@@ -62,4 +62,4 @@ See `Runtime/CrashGuard.cs` for the full API.
 - Android APK smoke build: verified.
 - iOS target compile: verified.
 - iOS Xcode export smoke build: verified.
-- Git URL install hash: `1d73be279a37c2576c3d0395e4315cf2de96429b`.
+- Git URL installs can be pinned to a full commit hash for reproducible builds.
